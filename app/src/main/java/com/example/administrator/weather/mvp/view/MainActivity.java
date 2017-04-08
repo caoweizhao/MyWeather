@@ -248,13 +248,13 @@ public class MainActivity extends AppCompatActivity implements IMainView {
 
         initOptionMenu();
         setSupportActionBar(mToolbar);
-        mToolbar.post(new Runnable() {
+       /* mToolbar.post(new Runnable() {
             @Override
             public void run() {
                 actionBarSize = mToolbar.getMeasuredHeight();
-                menuParams.setActionBarSize(actionBarSize);
+
             }
-        });
+        });*/
         mPresenter = new PresenterImpl();
         mPresenter.onAttach(this);
         initEvent();
@@ -348,12 +348,13 @@ public class MainActivity extends AppCompatActivity implements IMainView {
         menuParams.setClipToPadding(false);
         menuParams.setFitsSystemWindow(true);
 
+        menuParams.setActionBarSize(168);
         // set other settings to meet your needs
         mMenuDialogFragment = ContextMenuDialogFragment.newInstance(menuParams);
         mMenuDialogFragment.setItemClickListener(new OnMenuItemClickListener() {
             @Override
             public void onMenuItemClick(View clickedView, int position) {
-               mPresenter.onMenuItemClick(clickedView,position);
+                mPresenter.onMenuItemClick(clickedView,position);
             }
         });
         mMenuDialogFragment.setItemLongClickListener(new OnMenuItemLongClickListener() {
@@ -426,7 +427,7 @@ public class MainActivity extends AppCompatActivity implements IMainView {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         mMenuDialogFragment.show(getSupportFragmentManager(), "MenuDialogFragment");
-        return true;
+        return super.onOptionsItemSelected(item);
     }
 
     @Override
@@ -459,20 +460,34 @@ public class MainActivity extends AppCompatActivity implements IMainView {
         mPublishTime.setText(localTime + " 发布");
 
         //AQI
-        AQIBean aqiBean = heAllWeather5Bean.getAqi();
-        mAqiText.setText(aqiBean.getCity().getAqi());
-        mPm25Text.setText(aqiBean.getCity().getPm25());
+       try{
+           AQIBean aqiBean = heAllWeather5Bean.getAqi();
+           mAqiText.setText(aqiBean.getCity().getAqi());
+           mPm25Text.setText(aqiBean.getCity().getPm25());
+       }catch (Exception e){
+           mAqiText.setText("未知");
+           mPm25Text.setText("未知");
+       }
 
-        //NOW
-        mNowBean = heAllWeather5Bean.getNow();
-        mCurrentTmpText.setText(mNowBean.getTmp() + DEGREES);
-        mVisText.setText("能见度：" + mNowBean.getVis());
-        mHumText.setText("相对湿度：" + mNowBean.getHum());
-        mWindScText.setText("风力等级：" + mNowBean.getWind().getSc());
-        mCondTxt.setText(mNowBean.getCond().getTxt());
-        mDegreeTextView.setText(mNowBean.getTmp() + DEGREES);
-        mCurrentCondToolbar.setImageResource(icons.get(mNowBean.getCond().getCode()));
 
+       try {
+           //NOW
+           mNowBean = heAllWeather5Bean.getNow();
+           mCurrentTmpText.setText(mNowBean.getTmp() + DEGREES);
+           mVisText.setText("能见度：" + mNowBean.getVis());
+           mHumText.setText("相对湿度：" + mNowBean.getHum());
+           mWindScText.setText("风力等级：" + mNowBean.getWind().getSc());
+           mCondTxt.setText(mNowBean.getCond().getTxt());
+           mDegreeTextView.setText(mNowBean.getTmp() + DEGREES);
+           mCurrentCondToolbar.setImageResource(icons.get(mNowBean.getCond().getCode()));
+       }catch (Exception e){
+           mCurrentTmpText.setText("未知");
+           mVisText.setText("未知");
+           mHumText.setText("未知");
+           mWindScText.setText("未知");
+           mCondTxt.setText("未知");
+           mDegreeTextView.setText("未知");
+       }
 
         //HOURLY
        try{
@@ -571,7 +586,6 @@ public class MainActivity extends AppCompatActivity implements IMainView {
         UvBean uvBean = suggestionBean.getUv();
         mUvPointBref.setText("紫外线指数：" + uvBean.getBrf());
         mUvPointTxt.setText(uvBean.getTxt());
-
     }
 
     @Override
