@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="2dp"
+    android:layout_marginRight="2dp"
+    android:layout_marginTop="15dp"
+    android:layout_marginBottom="30dp"
+    app:cardBackgroundColor="#5000"
+    app:cardCornerRadius="4dp"
+    app:cardElevation="2dp"
+    app:contentPadding="2dp"
+    >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="10dp"
+        >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/suggestion"
+            android:textSize="@dimen/h2"
+            />
+
+        <!--空气指数-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            >
+
+            <TextView
+                android:id="@+id/air_point_bref"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/suggestion_margin"
+                tools:text="空气指数:中"
+                />
+
+            <TextView
+                android:id="@+id/air_point_txt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                tools:text="气象条件对空气污染物稀释、扩散和清除无明显影响，易感人群应适当减少室外活动时间。"
+                />
+        </LinearLayout>
+        <!--舒适度指数-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/comfortable_point_bref"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/suggestion_margin"
+                tools:text="舒适度：舒适"
+                />
+
+            <TextView
+                android:id="@+id/comfortable_point_txt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                tools:text="白天天气晴好，您在这种天气条件下，会感觉早晚凉爽、舒适，午后偏热。"
+                />
+        </LinearLayout>
+        <!--洗车指数-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            >
+
+            <TextView
+                android:id="@+id/cw_point_bref"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/suggestion_margin"
+                tools:text="洗车指数:不宜"
+                />
+
+            <TextView
+                android:id="@+id/cw_point_txt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                tools:text="不宜洗车，未来24小时内有雨，如果在此期间洗车，雨水和路上的泥水可能会再次弄脏您的爱车。"
+                />
+        </LinearLayout>
+
+        <!--隐藏的指数-->
+        <LinearLayout
+            android:id="@+id/more_suggestion"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:visibility="gone"
+            >
+            <!--旅游指数-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/trav_point_bref"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/suggestion_margin"
+                    tools:text="旅游指数:适宜"
+                    />
+
+                <TextView
+                    android:id="@+id/trav_point_txt"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    tools:text="有降水，虽然风稍大，但温度适宜，适宜旅游，可不要错过机会呦！"
+                    />
+            </LinearLayout>
+            <!--运动指数-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/sport_point_bref"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/suggestion_margin"
+                    tools:text="运动指数:较不宜"
+                    />
+
+                <TextView
+                    android:id="@+id/sport_point_txt"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    tools:text="有降水，且风力较强，气压较低，推荐您在室内进行低强度运动；若坚持户外运动，须注意避雨防风。"
+                    />
+            </LinearLayout>
+            <!--穿衣指数-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/drsg_point_bref"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/suggestion_margin"
+                    tools:text="穿衣指数:较冷"
+                    />
+
+                <TextView
+                    android:id="@+id/drsg_point_txt"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    tools:text="建议着厚外套加毛衣等服装。年老体弱者宜着大衣、呢外套加羊毛衫。"
+                    />
+            </LinearLayout>
+            <!--流感指数-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/flu_point_bref"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/suggestion_margin"
+                    tools:text="流感指数:极易发"
+                    />
+
+                <TextView
+                    android:id="@+id/flu_point_txt"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    tools:text="将有一次强降温过程，且空气湿度较大，极易发生感冒，请特别注意增加衣服保暖防寒。"
+                    />
+            </LinearLayout>
+            <!--紫外线指数-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/uv_point_bref"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/suggestion_margin"
+                    tools:text="紫外线指数:最弱"
+                    />
+
+                <TextView
+                    android:id="@+id/uv_point_txt"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    tools:text="属弱紫外线辐射天气，无需特别防护。若长期在户外，建议涂擦SPF在8-12之间的防晒护肤品。"
+                    />
+            </LinearLayout>
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:onClick="toggleMoreSuggestion"
+            android:padding="5dp"
+            android:text="@string/more"
+            android:textSize="16sp"
+            />
+    </LinearLayout>
+
+</android.support.v7.widget.CardView>

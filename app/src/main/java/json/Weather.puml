@@ -1,0 +1,133 @@
+@startuml
+
+class HeWeather{
+    private AQI aqi空气质量;
+    private Basic basic基本信息;
+    private List<DailyWeather> daily_forecast日预测;
+    private List<HourlyWeather> hourly_forecast时预测;
+    private NowWeather now当前天气;
+    private String status状态码;
+    private Suggestion suggestion生活建议;
+}
+
+class CityAQI{
+    String aqi指数;
+    String co;
+    String o3;
+    String pm10;
+    String pm25;
+    String qlty空气质量;
+}
+
+class AQI{
+    private CityAQI city空气质量;
+}
+
+class UpdateTime{
+    String localTime;
+    String UTCTime;
+}
+
+class Basic{
+    String city城市;
+    String cnty国家;
+    String id;
+    String lat经度；
+    String lon纬度；
+    private UpdateTime　update更新时间;
+}
+
+class WindInfo{
+    private String deg风向（360度）;
+    private String dir风向（北风）;
+    private String sc风力等级;
+    private String spd风速;
+}
+
+class Temperature{
+    String max;
+    String min;
+}
+
+class DailyForecastCondition{
+    private String code_d白天代码;
+    private String code_n晚上代码;
+    private String txt_d白天天气状况描述;
+    private String txt_n晚上天气状况描述;
+}
+class DailyWeather{
+    private DailyForecastCondition cond每日天气状况;
+    private String date时间2017-03-25;
+    private String hum相对湿度;
+    private String pcpn降水量;
+    private String pop降水概率;
+    private String pres气压;
+    private Temperature tmp温度max,min;
+    private String uv紫外线指数；
+    private String vis能见度;
+    private WindInfo wind风力情况;
+}
+
+
+class SimpleWeatherCondition{
+    String code代码;
+    String txt数据详情;
+}
+
+class HourlyWeather{
+    SimpleWeatherCondition cond每小时的天气状况;
+    private String date时间（2017-03-24 19:00;
+    private String hum相对湿度;
+    private String pop降水概率;
+    private String pres气压;
+    private String tmp温度;
+    private WindInfo wind风力情况;
+}
+
+class NowWeather{
+    private SimpleWeatherCondition cond当前天气状况;
+    private String fl流感指数;
+    private String hum相对湿度;
+    private String pcpn降水量;
+    private String pres气压;
+    private String tmp温度;
+    private String vis能见度;
+    private WindInfo 风力情况;
+}
+
+
+
+class SuggestionPoint{
+    private String brf简述;
+    private String txt数据详情;
+}
+
+class AirPoint extends SuggestionPoint{
+}
+class ComfortablePoint extends SuggestionPoint{
+}
+class CleanCarPoint extends SuggestionPoint{
+}
+class TravelPoint extends SuggestionPoint{
+}
+class SportPoint extends SuggestionPoint{
+}
+class ClothesPoint extends SuggestionPoint{
+}
+class FluPoint extends SuggestionPoint{
+}
+class UltravioletPoint extends SuggestionPoint{
+}
+
+class Suggestion{
+    private AirPoint air空气指数;
+    private ComfortablePoint comf舒适度指数;
+    private CleanCarPoint cw洗车指数;
+    private TravelPoint trav旅游指数;
+    private SportPoint sport运动指数;
+    private ClothesPoint drsg穿衣指数;
+    private FluPoint flu流感指数;
+    private UltravioletPoint uv紫外线指数;
+}
+
+@enduml
